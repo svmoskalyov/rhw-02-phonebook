@@ -29,15 +29,11 @@ export class App extends Component {
     }));
   };
 
-  changeFilter = event => {
-    this.setState({ filter: event.currentTarget.value });
+  changeFilter = e => {
+    const { value } = e.currentTarget;
+
+    this.setState({ filter: value });
   };
-
-  // changeFilter = e => {
-  //  const { value } = e.currentTarget;
-
-  //   this.setState({ filter: value });
-  // };
 
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
