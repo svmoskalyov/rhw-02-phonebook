@@ -33,7 +33,7 @@ export class App extends Component {
     return (
       <Box width="500px" mx="auto" p={4}>
         <Section title="Phonebook">
-          <ContactForm onSubmit={this.formSubmitHandler} />
+          <ContactForm addContact={this.addContact} />
         </Section>
 
         <Section title="Contacts">
