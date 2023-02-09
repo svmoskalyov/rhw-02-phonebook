@@ -29,6 +29,25 @@ export class App extends Component {
     }));
   };
 
+  changeFilter = event => {
+    this.setState({ filter: event.currentTarget.value });
+  };
+
+  // changeFilter = e => {
+  //  const { value } = e.currentTarget;
+
+  //   this.setState({ filter: value });
+  // };
+
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   render() {
     return (
       <Box width="500px" mx="auto" p={4}>
@@ -37,8 +56,8 @@ export class App extends Component {
         </Section>
 
         <Section title="Contacts">
-          <Filter />
-          <ContactList contacts={this.state.contacts} />
+          <Filter value={this.state.filter} onChange={this.changeFilter} />
+          <ContactList contacts={this.getVisibleContacts()} />
         </Section>
       </Box>
     );
