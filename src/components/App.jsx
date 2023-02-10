@@ -18,30 +18,47 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
+    const { contacts } = this.state;
     const item = {
       id: nanoid(),
       name,
       number,
     };
 
-    this.setState(({ contacts }) => ({
-      contacts: [item, ...contacts],
-    }));
+    if (name === '' || number === '') {
+      alert('Please enter all fields!');
+      return;
+    }
+
+    if (contacts.find(contact => contact.name === name)) {
+      alert(`${name} is already in contacts`);
+      return;
+    } else if (contacts.find(contact => contact.number === number)) {
+      alert(`${number} is already in contacts`);
+    } else {
+      this.setState(({ contacts }) => ({
+        contacts: [item, ...contacts],
+      }));
+    }
   };
 
   changeFilter = e => {
     const { value } = e.currentTarget;
-
     this.setState({ filter: value });
   };
 
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
-
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
+  };
+
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   render() {
@@ -53,7 +70,10 @@ export class App extends Component {
 
         <Section title="Contacts">
           <Filter value={this.state.filter} onChange={this.changeFilter} />
-          <ContactList contacts={this.getVisibleContacts()} />
+          <ContactList
+            contacts={this.getVisibleContacts()}
+            onDeleteContact={this.deleteContact}
+          />
         </Section>
       </Box>
     );
