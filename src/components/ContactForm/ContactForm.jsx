@@ -1,6 +1,8 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Forma, Label, Input, Button } from './ContactForm.styled';
+import { ImUserPlus } from 'react-icons/im';
+import { Forma, Label, Input } from './ContactForm.styled';
+import { Button } from 'components/Button/Button';
 
 const phoneRegex = RegExp(
   /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/
@@ -55,7 +57,9 @@ export const ContactForm = ({ addContact }) => {
         </Label>
         <ErrorMessage name="number" />
 
-        <Button type="submit">Add contact</Button>
+        <Button type="submit" icon={ImUserPlus}>
+          Add contact
+        </Button>
       </Forma>
     </Formik>
   );
