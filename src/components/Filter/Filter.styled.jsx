@@ -12,6 +12,6 @@ export const Label = styled.label`
 export const Input = styled.input`
   margin-top: ${p => p.theme.space[3]}px;
   padding: 0 ${p => p.theme.space[3]}px;
-  width: 90%;
+  width: 62%;
   font-size: ${p => p.theme.fontSizes.m};
 `;
