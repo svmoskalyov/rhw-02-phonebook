@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { StyledButton } from './Button.styled';
 
 export const Button = ({
@@ -13,4 +14,12 @@ export const Button = ({
       {children}
     </StyledButton>
   );
+};
+
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  icon: PropTypes.element.isRequired,
+  disabled: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
