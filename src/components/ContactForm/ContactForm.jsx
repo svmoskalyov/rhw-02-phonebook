@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ImUserPlus } from 'react-icons/im';
@@ -63,4 +64,8 @@ export const ContactForm = ({ addContact }) => {
       </Forma>
     </Formik>
   );
+};
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
 };
