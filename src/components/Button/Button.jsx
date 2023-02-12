@@ -17,9 +17,9 @@ export const Button = ({
 };
 
 Button.propTypes = {
-  type: PropTypes.string.isRequired,
-  icon: PropTypes.element.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  type: PropTypes.string,
+  icon: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
