@@ -55,8 +55,8 @@ export const ContactForm = ({ addContact }) => {
             required
             placeholder="000-00-00"
           />
+          <ErrorMessage name="number" />
         </Label>
-        <ErrorMessage name="number" />
 
         <Button type="submit" icon={ImUserPlus}>
           Add contact
